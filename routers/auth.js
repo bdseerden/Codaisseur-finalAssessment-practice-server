@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const Space = require("../models/").space;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -51,7 +52,21 @@ router.post("/signup", async (req, res) => {
 
     const token = toJWT({ userId: newUser.id });
 
-    res.status(201).json({ token, user: newUser.dataValues });
+    const newSpace = await Space.create({
+      title: `${newUser.name}'s space`,
+      userId: newUser.id,
+      backgroundColor: "#ffffff",
+      color: "#000000",
+    });
+
+    res.status(201).json({
+      token,
+      user: newUser.dataValues,
+      space: {
+        ...newSpace.dataValues,
+        stories: [],
+      },
+    });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
       return res
