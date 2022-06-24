@@ -35,7 +35,7 @@ module.exports = {
           name: "React",
           content: "Was the hardest week for me!",
           imageUrl:
-            "https://res.cloudinary.com/practicaldev/image/fetch/s--wCGgterD--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://www.freecodecamp.org/news/content/images/size/w2000/2020/02/Ekran-Resmi-2019-11-18-18.08.13.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
           spaceId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
