@@ -96,7 +96,6 @@ router.get("/me", authMiddleware, async (req, res) => {
     include: [Story],
     order: [[Story, "createdAt", "DESC"]],
   });
-  // don't send back the password hash
   delete req.user.dataValues["password"];
   res.status(200).send({ user: req.user.dataValues, space });
 });
